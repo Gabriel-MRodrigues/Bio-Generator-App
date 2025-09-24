@@ -24,7 +24,7 @@ export const generateBio = async (req, res) => {
 
     Return the result in JSON format:
     {
-      "bioSummary": "a polished 2–3 sentence bio",
+      "bioSummary": "a polished bio",
       "coreValues": "...",
       "motivation": "...",
       "careerPath": "...",

@@ -1,12 +1,17 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 
 export async function generateWithAI(prompt) {
-  const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+  const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
   const result = await model.generateContent([prompt]);
-  const text = result.response.text();
+
+  let text = result.response.text();
+  text = text.replace(/```json|```/g, '').trim();
 
   try {
     return JSON.parse(text);
